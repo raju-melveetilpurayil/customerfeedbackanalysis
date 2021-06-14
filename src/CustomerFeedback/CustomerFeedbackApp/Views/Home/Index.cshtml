@@ -1,0 +1,45 @@
+﻿@model Feedback
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Feedback Form</h2><br />
+        <b>How did we do? Please share your feedback with us to help improve our service.</b><br /><br />
+        @if (ViewData["Message"] != null)
+        {
+             <h2>@ViewData["Message"].ToString()</h2>
+        }
+    </div>
+</div>
+
+@using (Html.BeginForm("SaveFeedback", "Home", FormMethod.Post, new { id = "feedbackForm" }))
+{
+    <div class="row">
+        <div class="col-lg-2">First Name</div>
+        <div class="col-lg-10">
+            @Html.TextBoxFor(a => a.Firstname, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-2">Last Name</div>
+        <div class="col-lg-10">
+            @Html.TextBoxFor(a => a.Lastname, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-2">Comment</div>
+        <div class="col-lg-10">
+            @Html.TextAreaFor(a => a.Comment, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </div>
+}
